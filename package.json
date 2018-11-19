@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/samdoan01/SGBot/issues"
   },
-  "homepage": "https://github.com/samdoan01/SGBot#readme"
+  "homepage": "https://github.com/samdoan01/SGBot#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "slackbots": "^1.2.0"
+  }
 }
