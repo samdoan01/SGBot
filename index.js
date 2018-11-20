@@ -77,10 +77,11 @@ function getBibleVerse(verse) {
 	axios.get(src)
 	.then(res => {
 		const text = res.data.text;
-
+		const textInLine = "```".concat(text).concat("```");
+		
 		bot.postMessageToChannel(
 		'general',
-		`VERSE: ${text}`
+		`${textInLine}`
 		);
 	});
 }
