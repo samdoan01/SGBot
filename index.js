@@ -1,5 +1,5 @@
 /**
- * 
+ * SGBot index.js
  */
 
 const SlackBot = require('slackbots');
@@ -12,10 +12,6 @@ const bot = new SlackBot({
 
 // Start handler
 bot.on('start', () => {
-	
-//	const params = {
-//			icon_emoji: ':smiley:'
-//	};
 	
 	bot.postMessageToChannel(
 	'general',
@@ -38,39 +34,14 @@ bot.on('message', data => {
 
 // Respond to Data
 function handleMessage(message) {
-	var regex = new RegExp(/(?:\d\s*)?[A-Z]?[a-z]+\s*\d+(?:[:-]\d+)?(?:\s*-\s*\d+)?(?::\d+|(?:\s*[A-Z]?[a-z]+\s*\d+:\d+))?/);
-	//var regex = new RegExp(/[A-Z][a-z]{1,}$/);
-	if(message.includes(' chucknorris')) {
-		chuckJoke();
-	}
-	else if(regex.test(message) == true) {
+	//var regex = new RegExp(/(?:\d\s*)?[A-Z]?[a-z]+\s*\d+(?:[:-]\d+)?(?:\s*-\s*\d+)?(?::\d+|(?:\s*[A-Z]?[a-z]+\s*\d+:\d+))?/);
+	var regex = new RegExp(/(?:\d\s*)?[A-Z]?[a-z]+\s*\d+(?::\d+|(?:\s*[A-Z]?[a-z]+\s*\d+:\d+))?/);
+	if(regex.test(message) == true) {
 		getBibleVerse(regex.exec(message));
 	}
-//	else if(regex.test(message) == true) {
-//		chuckJoke();
-//	}
+
 }
 
-
-// Tell a Chuck Norris Joke
-function chuckJoke() {
-	axios.get('http://api.icndb.com/jokes/random')
-	.then(res => {
-		const joke = res.data.value.joke;
-	
-		const params = {
-				icon_emoji: ':laughing:'
-		};
-		
-		bot.postMessageToChannel(
-		'general',
-		`Chuck Norris: ${joke}`,
-		params
-		);
-	});
-}
-
-// Retrieve bible verse; if exists 
 function getBibleVerse(verse) {
 	var src = 'https://bible-api.com/' + verse;
 	console.log(src);
