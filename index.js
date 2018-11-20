@@ -25,7 +25,11 @@ bot.on('error', (err) => console.log(err));
 
 // Message Handling
 bot.on('message', data => {
+	
 	if(data.type !== 'message') {
+		return;
+	}
+	if(data.username === bot.name) {
 		return;
 	}
 	
@@ -48,11 +52,13 @@ function getBibleVerse(verse) {
 	axios.get(src)
 	.then(res => {
 		const text = res.data.text;
-		const textInLine = "```".concat(text).concat("```");
+		const reference = res.data.reference;
+		
+		const formattedText = "```".concat(reference).concat("\n").concat(text).concat("```");
 		
 		bot.postMessageToChannel(
 		'general',
-		`${textInLine}`
+		`${formattedText}`
 		);
 	});
 }
