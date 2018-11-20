@@ -15,7 +15,7 @@ bot.on('start', () => {
 	
 	bot.postMessageToChannel(
 	'general',
-	'Get blessed by @SGBot!'
+	`*_Get blessed with @SGBot!_*\n _Hi, I'm *@SGBot*! I'm your virtual small group helper. Please be nice to me._`
 	);
 	
 });
@@ -39,15 +39,14 @@ bot.on('message', data => {
 // Respond to Data
 function handleMessage(message) {
 	
-	// /(?:\d\s*)?     -> 1/2
-	// [A-Z]?[a-z]+\s* -> Letter and spaces
-	// \d+             -> Chapter number
-	// (?:[:-]\d+)?    -> Additional chapters
-	// (?:\s*-\s*\d+)? -> Spaces and numbers
-	var regex = new RegExp(/(?:\d\s*)?[A-Z]?[a-z]+\s*\d+(?:[:-]\d+)?(?:\s*-\s*\d+)?(?::\d+|(?:\s*[A-Z]?[a-z]+\s*\d+:\d+))?/);
-	//var regex = new RegExp(/(?:\d\s*)?[A-Z]?[a-z]+\s*\d(?:\s*-\s*\d+)?(?::\d+|(?:\s*[A-Z]?[a-z]+\s*\d+:\d+))?/);
-	if(regex.test(message) == true) {
-		getBibleVerse(regex.exec(message));
+	var verseRegex = new RegExp(/(?:\d\s*)?[A-Z]?[a-z]+\s*\d+(?:[:-]\d+)?(?:\s*-\s*\d+)?(?::\d+|(?:\s*[A-Z]?[a-z]+\s*\d+:\d+))?/);
+	var helloRegex = new RegExp(/(H|h)ello|(H|h)i|(W|w)(h?)at('?)s (up|good|gud|gucci)/);
+	var sgbotRegex = new RegExp(/((S|s)(G|g)(B|b)(O|o)(T|t))|@UE8C32XDM/);
+	if(verseRegex.test(message) == true) {
+		getBibleVerse(verseRegex.exec(message));
+	}
+	else if(helloRegex.test(message) && sgbotRegex.test(message)) {
+		sayHiBack(message);
 	}
 
 }
@@ -74,6 +73,14 @@ function getBibleVerse(verse) {
 			);
 		}
 	});
+	
+}
+
+function sayHiBack(message) {
+	bot.postMessageToChannel(
+			'general',
+			`_Hello there!_`
+			);
 }
 
 
