@@ -19,6 +19,7 @@
   "homepage": "https://github.com/samdoan01/SGBot#readme",
   "dependencies": {
     "axios": "^0.18.0",
+    "heroku": "^7.18.10",
     "slackbots": "^1.2.0"
   }
 }
