@@ -23,10 +23,12 @@ const bot = new SlackBot({
 
 // Start handler
 bot.on('start', () => {
+	/*
 	bot.postMessageToChannel(
 	'general',
 	`*_Get blessed with @SGBot_*\n _I'm your virtual small group helper. Please be nice to me._`
 	);
+	*/
 });
 
 // ERROR Handling
