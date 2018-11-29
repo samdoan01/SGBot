@@ -16,7 +16,7 @@ var dateRegex = new RegExp(/((T|t)(mr|omorrow))|((M|m)(on|onday))|((T|t)(ues|hur
 
 const bot = new SlackBot({
 	//token: 'xoxb-482580549056-484411099463-j1R8ptANL6ysJXAcix56uEJR',
-	token: 'xoxb-418808665233-490652008853-30g5URsyyx8tFW2dG5H9lM0o',
+	token: 'xoxb-482580549056-491521974900-YjJPYJrIN5bndh4Gy29EeECQ',
 	name: 'sgbot'
 
 });
